@@ -1,0 +1,479 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Reading design: shift_add_mult_fsm.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "shift_add_mult_fsm.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "shift_add_mult_fsm"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : shift_add_mult_fsm
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "D:\BRAC\Current\EEE413\compare\alu_pkg.vhd" into library work
+Parsing package <alu_pkg>.
+Parsing package body <alu_pkg>.
+Parsing VHDL file "D:\BRAC\Current\EEE413\compare\shift_add_mult_fsm.vhd" into library work
+Parsing entity <shift_add_mult_fsm>.
+Parsing architecture <rtl> of entity <shift_add_mult_fsm>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <shift_add_mult_fsm> (architecture <rtl>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <shift_add_mult_fsm>.
+    Related source file is "D:\BRAC\Current\EEE413\compare\shift_add_mult_fsm.vhd".
+    Found 17-bit register for signal <A_reg>.
+    Found 16-bit register for signal <Q_reg>.
+    Found 16-bit register for signal <mag_a_reg>.
+    Found 16-bit register for signal <product_hi>.
+    Found 16-bit register for signal <product_lo>.
+    Found 5-bit register for signal <iter_cnt>.
+    Found 2-bit register for signal <state>.
+    Found 1-bit register for signal <sign_a_reg>.
+    Found 1-bit register for signal <sign_b_reg>.
+    Found 1-bit register for signal <range_ovf>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | st_idle                                        |
+    | Power Up State     | st_idle                                        |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 17-bit adder for signal <A_reg[16]_GND_5_o_add_5_OUT> created at line 107.
+    Found 16-bit adder for signal <operand_a[15]_GND_5_o_add_12_OUT> created at line 1241.
+    Found 16-bit adder for signal <operand_b[15]_GND_5_o_add_15_OUT> created at line 1241.
+    Found 5-bit adder for signal <iter_cnt[4]_GND_5_o_add_17_OUT> created at line 1241.
+    Found 32-bit subtractor for signal <A_next[15]_unary_minus_20_OUT<31:0>> created at line 0.
+    Found 16-bit comparator not equal for signal <A_next[15]_A_next[15]_equal_22_o> created at line 183
+    Summary:
+	inferred   5 Adder/Subtractor(s).
+	inferred  89 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   7 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <shift_add_mult_fsm> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 5
+ 16-bit adder                                          : 2
+ 17-bit adder                                          : 1
+ 32-bit subtractor                                     : 1
+ 5-bit adder                                           : 1
+# Registers                                            : 9
+ 1-bit register                                        : 3
+ 16-bit register                                       : 4
+ 17-bit register                                       : 1
+ 5-bit register                                        : 1
+# Comparators                                          : 1
+ 16-bit comparator not equal                           : 1
+# Multiplexers                                         : 7
+ 16-bit 2-to-1 multiplexer                             : 3
+ 17-bit 2-to-1 multiplexer                             : 2
+ 32-bit 2-to-1 multiplexer                             : 1
+ 5-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+# Xors                                                 : 1
+ 1-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <shift_add_mult_fsm>.
+The following registers are absorbed into counter <iter_cnt>: 1 register on signal <iter_cnt>.
+Unit <shift_add_mult_fsm> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 4
+ 16-bit adder                                          : 2
+ 17-bit adder                                          : 1
+ 32-bit subtractor                                     : 1
+# Counters                                             : 1
+ 5-bit up counter                                      : 1
+# Registers                                            : 84
+ Flip-Flops                                            : 84
+# Comparators                                          : 1
+ 16-bit comparator not equal                           : 1
+# Multiplexers                                         : 22
+ 1-bit 2-to-1 multiplexer                              : 17
+ 16-bit 2-to-1 multiplexer                             : 3
+ 17-bit 2-to-1 multiplexer                             : 1
+ 32-bit 2-to-1 multiplexer                             : 1
+# FSMs                                                 : 1
+# Xors                                                 : 1
+ 1-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+------------------------
+ State      | Encoding
+------------------------
+ st_idle    | 00
+ st_load    | 01
+ st_compute | 10
+ st_done    | 11
+------------------------
+WARNING:Xst:1710 - FF/Latch <A_reg_16> (without init value) has a constant value of 0 in block <shift_add_mult_fsm>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <shift_add_mult_fsm> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block shift_add_mult_fsm, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 90
+ Flip-Flops                                            : 90
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : shift_add_mult_fsm.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 343
+#      GND                         : 1
+#      INV                         : 45
+#      LUT1                        : 2
+#      LUT2                        : 23
+#      LUT3                        : 36
+#      LUT4                        : 31
+#      LUT5                        : 19
+#      LUT6                        : 27
+#      MUXCY                       : 77
+#      VCC                         : 1
+#      XORCY                       : 81
+# FlipFlops/Latches                : 90
+#      FDC                         : 2
+#      FDCE                        : 88
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 69
+#      IBUF                        : 34
+#      OBUF                        : 35
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              90  out of  126800     0%  
+ Number of Slice LUTs:                  183  out of  63400     0%  
+    Number used as Logic:               183  out of  63400     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    184
+   Number with an unused Flip Flop:      94  out of    184    51%  
+   Number with an unused LUT:             1  out of    184     0%  
+   Number of fully used LUT-FF pairs:    89  out of    184    48%  
+   Number of unique control sets:         4
+
+IO Utilization: 
+ Number of IOs:                          70
+ Number of bonded IOBs:                  70  out of    210    33%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 90    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 4.729ns (Maximum Frequency: 211.439MHz)
+   Minimum input arrival time before clock: 2.036ns
+   Maximum output required time after clock: 1.333ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.729ns (frequency: 211.439MHz)
+  Total number of paths / destination ports: 12483 / 160
+-------------------------------------------------------------------------
+Delay:               4.729ns (Levels of Logic = 12)
+  Source:            A_reg_0 (FF)
+  Destination:       range_ovf_reg (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: A_reg_0 to range_ovf_reg
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             4   0.361   0.393  A_reg_0 (A_reg_0)
+     LUT2:I0->O            1   0.097   0.000  Madd_A_reg[16]_GND_5_o_add_5_OUT_lut<0> (Madd_A_reg[16]_GND_5_o_add_5_OUT_lut<0>)
+     MUXCY:S->O            1   0.353   0.000  Madd_A_reg[16]_GND_5_o_add_5_OUT_cy<0> (Madd_A_reg[16]_GND_5_o_add_5_OUT_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_A_reg[16]_GND_5_o_add_5_OUT_cy<1> (Madd_A_reg[16]_GND_5_o_add_5_OUT_cy<1>)
+     XORCY:CI->O           5   0.370   0.314  Madd_A_reg[16]_GND_5_o_add_5_OUT_xor<2> (A_reg[16]_GND_5_o_add_5_OUT<2>)
+     LUT3:I2->O            1   0.097   0.000  Msub_A_next[15]_unary_minus_20_OUT<31:0>_lut<17> (Msub_A_next[15]_unary_minus_20_OUT<31:0>_lut<17>)
+     MUXCY:S->O            1   0.353   0.000  Msub_A_next[15]_unary_minus_20_OUT<31:0>_cy<17> (Msub_A_next[15]_unary_minus_20_OUT<31:0>_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_A_next[15]_unary_minus_20_OUT<31:0>_cy<18> (Msub_A_next[15]_unary_minus_20_OUT<31:0>_cy<18>)
+     XORCY:CI->O           1   0.370   0.295  Msub_A_next[15]_unary_minus_20_OUT<31:0>_xor<19> (A_next[15]_unary_minus_20_OUT<19>)
+     LUT6:I5->O            3   0.097   0.693  Mmux_A_next[15]_A_next[15]_mux_20_OUT111 (A_next[15]_A_next[15]_mux_20_OUT<19>)
+     LUT5:I0->O            1   0.097   0.295  A_next[15]_INV_56_o2 (A_next[15]_INV_56_o3)
+     LUT6:I5->O            1   0.097   0.295  A_next[15]_INV_56_o3 (A_next[15]_INV_56_o4)
+     LUT6:I5->O            1   0.097   0.000  A_next[15]_INV_56_o9 (A_next[15]_INV_56_o)
+     FDCE:D                    0.008          range_ovf_reg
+    ----------------------------------------
+    Total                      4.729ns (2.443ns logic, 2.286ns route)
+                                       (51.7% logic, 48.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 427 / 125
+-------------------------------------------------------------------------
+Offset:              2.036ns (Levels of Logic = 18)
+  Source:            operand_b<0> (PAD)
+  Destination:       Q_reg_14 (FF)
+  Destination Clock: clk rising
+
+  Data Path: operand_b<0> to Q_reg_14
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.001   0.300  operand_b_0_IBUF (operand_b_0_IBUF)
+     LUT1:I0->O            1   0.097   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<0>_rt (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<0>_rt)
+     MUXCY:S->O            1   0.353   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<0> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<1> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<2> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<3> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<4> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<5> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<6> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<7> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<8> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<9> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<10> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<11> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<12> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<13> (Madd_operand_b[15]_GND_5_o_add_15_OUT_cy<13>)
+     XORCY:CI->O           1   0.370   0.511  Madd_operand_b[15]_GND_5_o_add_15_OUT_xor<14> (operand_b[15]_GND_5_o_add_15_OUT<14>)
+     LUT5:I2->O            1   0.097   0.000  Mmux_state[1]_A_reg[16]_wide_mux_27_OUT1121 (state[1]_Q_reg[15]_wide_mux_28_OUT<14>)
+     FDCE:D                    0.008          Q_reg_14
+    ----------------------------------------
+    Total                      2.036ns (1.225ns logic, 0.811ns route)
+                                       (60.2% logic, 39.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 37 / 35
+-------------------------------------------------------------------------
+Offset:              1.333ns (Levels of Logic = 2)
+  Source:            state_FSM_FFd1 (FF)
+  Destination:       busy (PAD)
+  Source Clock:      clk rising
+
+  Data Path: state_FSM_FFd1 to busy
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             42   0.361   0.488  state_FSM_FFd1 (state_FSM_FFd1)
+     LUT2:I0->O           39   0.097   0.387  _n0136_inv1 (busy_OBUF)
+     OBUF:I->O                 0.000          busy_OBUF (busy)
+    ----------------------------------------
+    Total                      1.333ns (0.458ns logic, 0.875ns route)
+                                       (34.4% logic, 65.6% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    4.729|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 11.10 secs
+ 
+--> 
+
+Total memory usage is 4687020 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

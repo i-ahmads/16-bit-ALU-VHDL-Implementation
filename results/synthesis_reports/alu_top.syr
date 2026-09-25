@@ -1,0 +1,737 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Reading design: alu_top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "alu_top.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "alu_top"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : alu_top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "D:\BRAC\Current\EEE413\Project\alu_pkg.vhd" into library work
+Parsing package <alu_pkg>.
+Parsing package body <alu_pkg>.
+Parsing VHDL file "D:\BRAC\Current\EEE413\Project\restoring_div_fsm.vhd" into library work
+Parsing entity <restoring_div_fsm>.
+Parsing architecture <rtl> of entity <restoring_div_fsm>.
+Parsing VHDL file "D:\BRAC\Current\EEE413\Project\flags_unit.vhd" into library work
+Parsing entity <flags_unit>.
+Parsing architecture <rtl> of entity <flags_unit>.
+Parsing VHDL file "D:\BRAC\Current\EEE413\Project\combinational_alu.vhd" into library work
+Parsing entity <combinational_alu>.
+Parsing architecture <rtl> of entity <combinational_alu>.
+Parsing VHDL file "D:\BRAC\Current\EEE413\Project\booth_mult_fsm.vhd" into library work
+Parsing entity <booth_mult_fsm>.
+Parsing architecture <rtl> of entity <booth_mult_fsm>.
+Parsing VHDL file "D:\BRAC\Current\EEE413\Project\bist_fsm.vhd" into library work
+Parsing entity <bist_fsm>.
+Parsing architecture <behavioral> of entity <bist_fsm>.
+Parsing VHDL file "D:\BRAC\Current\EEE413\Project\alu_top.vhd" into library work
+Parsing entity <alu_top>.
+Parsing architecture <struct> of entity <alu_top>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <alu_top> (architecture <struct>) from library <work>.
+
+Elaborating entity <combinational_alu> (architecture <rtl>) from library <work>.
+
+Elaborating entity <booth_mult_fsm> (architecture <rtl>) from library <work>.
+INFO:HDLCompiler:679 - "D:\BRAC\Current\EEE413\Project\booth_mult_fsm.vhd" Line 97. Case statement is complete. others clause is never selected
+
+Elaborating entity <restoring_div_fsm> (architecture <rtl>) from library <work>.
+
+Elaborating entity <flags_unit> (architecture <rtl>) from library <work>.
+
+Elaborating entity <bist_fsm> (architecture <behavioral>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <alu_top>.
+    Related source file is "D:\BRAC\Current\EEE413\Project\alu_top.vhd".
+    Summary:
+	inferred  11 Multiplexer(s).
+Unit <alu_top> synthesized.
+
+Synthesizing Unit <combinational_alu>.
+    Related source file is "D:\BRAC\Current\EEE413\Project\combinational_alu.vhd".
+    Found 17-bit adder for signal <GND_6_o_GND_6_o_add_0_OUT> created at line 36.
+    Found 17-bit adder for signal <n0045> created at line 42.
+    Found 17-bit adder for signal <GND_6_o_GND_6_o_add_3_OUT> created at line 1241.
+    Found 16-bit shifter logical left for signal <operand_a[15]_operand_b[3]_shift_left_8_OUT> created at line 2955
+    Found 16-bit shifter logical right for signal <operand_a[15]_operand_b[3]_shift_right_9_OUT> created at line 2964
+    Found 16-bit shifter arithmetic right for signal <operand_a[15]_operand_b[3]_shift_right_10_OUT> created at line 2982
+    Found 16-bit shifter rotate left for signal <operand_a[15]_operand_b[3]_rotate_left_11_OUT> created at line 2993
+    Found 16-bit shifter rotate right for signal <operand_a[15]_operand_b[3]_rotate_right_12_OUT> created at line 3002
+    Found 16-bit 13-to-1 multiplexer for signal <res_v> created at line 34.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   3 Multiplexer(s).
+	inferred   5 Combinational logic shifter(s).
+Unit <combinational_alu> synthesized.
+
+Synthesizing Unit <booth_mult_fsm>.
+    Related source file is "D:\BRAC\Current\EEE413\Project\booth_mult_fsm.vhd".
+    Found 18-bit register for signal <A_reg>.
+    Found 18-bit register for signal <M_reg>.
+    Found 16-bit register for signal <Q_reg>.
+    Found 16-bit register for signal <prod_hi_reg>.
+    Found 16-bit register for signal <prod_lo_reg>.
+    Found 4-bit register for signal <iter_cnt>.
+    Found 2-bit register for signal <state>.
+    Found 1-bit register for signal <Qm1_reg>.
+    Found 1-bit register for signal <range_ovf_reg>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | st_idle                                        |
+    | Power Up State     | st_idle                                        |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 18-bit adder for signal <a_sum> created at line 101.
+    Found 4-bit adder for signal <iter_cnt[3]_GND_7_o_add_14_OUT> created at line 1241.
+    Found 18-bit subtractor for signal <M_reg[16]_unary_minus_6_OUT<17:0>> created at line 0.
+    Found 18-bit subtractor for signal <M_reg[17]_unary_minus_7_OUT<17:0>> created at line 0.
+    Found 18-bit 8-to-1 multiplexer for signal <addend> created at line 86.
+    Found 16-bit comparator not equal for signal <A_next[15]_Q_next[15]_equal_17_o> created at line 151
+    Summary:
+	inferred   4 Adder/Subtractor(s).
+	inferred  90 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   5 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <booth_mult_fsm> synthesized.
+
+Synthesizing Unit <restoring_div_fsm>.
+    Related source file is "D:\BRAC\Current\EEE413\Project\restoring_div_fsm.vhd".
+    Found 17-bit register for signal <R_reg>.
+    Found 16-bit register for signal <Q_reg>.
+    Found 16-bit register for signal <D_reg>.
+    Found 16-bit register for signal <quotient_reg>.
+    Found 16-bit register for signal <remainder_reg>.
+    Found 5-bit register for signal <iter_cnt>.
+    Found 2-bit register for signal <state>.
+    Found 1-bit register for signal <div_by_zero_reg>.
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | st_idle                                        |
+    | Power Up State     | st_idle                                        |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 5-bit adder for signal <iter_cnt[4]_GND_9_o_add_13_OUT> created at line 1241.
+    Found 17-bit subtractor for signal <r_sub> created at line 88.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  87 D-type flip-flop(s).
+	inferred   6 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <restoring_div_fsm> synthesized.
+
+Synthesizing Unit <flags_unit>.
+    Related source file is "D:\BRAC\Current\EEE413\Project\flags_unit.vhd".
+WARNING:Xst:647 - Input <operand_a<14:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <operand_b<14:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	inferred  17 Multiplexer(s).
+Unit <flags_unit> synthesized.
+
+Synthesizing Unit <bist_fsm>.
+    Related source file is "D:\BRAC\Current\EEE413\Project\bist_fsm.vhd".
+    Found 1-bit register for signal <pass_reg>.
+    Found 4-bit register for signal <vec_idx>.
+    Found 4-bit register for signal <fail_idx_reg>.
+    Found 2-bit register for signal <state>.
+    Found 1-bit register for signal <start_issued>.
+    Found finite state machine <FSM_2> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 5                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | st_bidle                                       |
+    | Power Up State     | st_bidle                                       |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4-bit adder for signal <vec_idx[3]_GND_11_o_add_54_OUT> created at line 1241.
+    Found 16x68-bit Read Only RAM for signal <_n0104>
+    Found 4-bit 3-to-1 multiplexer for signal <state[1]_X_10_o_wide_mux_61_OUT> created at line 138.
+    Found 1-bit 3-to-1 multiplexer for signal <state[1]_X_10_o_Mux_62_o> created at line 138.
+    Found 1-bit 3-to-1 multiplexer for signal <state[1]_X_10_o_Mux_63_o> created at line 138.
+    Found 4-bit 3-to-1 multiplexer for signal <state[1]_X_10_o_wide_mux_64_OUT> created at line 138.
+    Found 4-bit comparator greater for signal <vec_idx[3]_PWR_12_o_LessThan_33_o> created at line 115
+    Found 16-bit comparator not equal for signal <n0021> created at line 156
+    Found 16-bit comparator not equal for signal <n0024> created at line 157
+    Summary:
+	inferred   1 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  10 D-type flip-flop(s).
+	inferred   3 Comparator(s).
+	inferred  24 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <bist_fsm> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 16x68-bit single-port Read Only RAM                   : 1
+# Adders/Subtractors                                   : 10
+ 17-bit adder                                          : 3
+ 17-bit subtractor                                     : 1
+ 18-bit adder                                          : 1
+ 18-bit subtractor                                     : 2
+ 4-bit adder                                           : 2
+ 5-bit adder                                           : 1
+# Registers                                            : 19
+ 1-bit register                                        : 5
+ 16-bit register                                       : 7
+ 17-bit register                                       : 1
+ 18-bit register                                       : 2
+ 4-bit register                                        : 3
+ 5-bit register                                        : 1
+# Comparators                                          : 4
+ 16-bit comparator not equal                           : 3
+ 4-bit comparator greater                              : 1
+# Multiplexers                                         : 66
+ 1-bit 2-to-1 multiplexer                              : 33
+ 1-bit 3-to-1 multiplexer                              : 2
+ 16-bit 13-to-1 multiplexer                            : 1
+ 16-bit 2-to-1 multiplexer                             : 12
+ 17-bit 2-to-1 multiplexer                             : 2
+ 18-bit 2-to-1 multiplexer                             : 1
+ 18-bit 8-to-1 multiplexer                             : 1
+ 4-bit 2-to-1 multiplexer                              : 11
+ 4-bit 3-to-1 multiplexer                              : 2
+ 5-bit 2-to-1 multiplexer                              : 1
+# Logic shifters                                       : 5
+ 16-bit shifter arithmetic right                       : 1
+ 16-bit shifter logical left                           : 1
+ 16-bit shifter logical right                          : 1
+ 16-bit shifter rotate left                            : 1
+ 16-bit shifter rotate right                           : 1
+# FSMs                                                 : 3
+# Xors                                                 : 5
+ 1-bit xor16                                           : 1
+ 1-bit xor2                                            : 3
+ 16-bit xor2                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <M_reg_15> in Unit <u_booth_mult> is equivalent to the following 2 FFs/Latches, which will be removed : <M_reg_16> <M_reg_17> 
+WARNING:Xst:2677 - Node <R_reg_16> of sequential type is unconnected in block <u_restoring_div>.
+
+Synthesizing (advanced) Unit <bist_fsm>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0104> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 68-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <vec_idx>       |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <bist_fsm> synthesized (advanced).
+
+Synthesizing (advanced) Unit <booth_mult_fsm>.
+The following registers are absorbed into counter <iter_cnt>: 1 register on signal <iter_cnt>.
+Unit <booth_mult_fsm> synthesized (advanced).
+
+Synthesizing (advanced) Unit <restoring_div_fsm>.
+The following registers are absorbed into counter <iter_cnt>: 1 register on signal <iter_cnt>.
+Unit <restoring_div_fsm> synthesized (advanced).
+WARNING:Xst:2677 - Node <R_reg_16> of sequential type is unconnected in block <restoring_div_fsm>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 16x68-bit single-port distributed Read Only RAM       : 1
+# Adders/Subtractors                                   : 7
+ 17-bit adder                                          : 1
+ 17-bit adder carry in                                 : 1
+ 17-bit subtractor                                     : 1
+ 18-bit adder                                          : 1
+ 18-bit subtractor                                     : 2
+ 4-bit adder                                           : 1
+# Counters                                             : 2
+ 4-bit up counter                                      : 1
+ 5-bit up counter                                      : 1
+# Registers                                            : 177
+ Flip-Flops                                            : 177
+# Comparators                                          : 4
+ 16-bit comparator not equal                           : 3
+ 4-bit comparator greater                              : 1
+# Multiplexers                                         : 94
+ 1-bit 2-to-1 multiplexer                              : 65
+ 1-bit 3-to-1 multiplexer                              : 2
+ 16-bit 13-to-1 multiplexer                            : 1
+ 16-bit 2-to-1 multiplexer                             : 10
+ 17-bit 2-to-1 multiplexer                             : 2
+ 18-bit 2-to-1 multiplexer                             : 1
+ 18-bit 8-to-1 multiplexer                             : 1
+ 4-bit 2-to-1 multiplexer                              : 10
+ 4-bit 3-to-1 multiplexer                              : 2
+# Logic shifters                                       : 5
+ 16-bit shifter arithmetic right                       : 1
+ 16-bit shifter logical left                           : 1
+ 16-bit shifter logical right                          : 1
+ 16-bit shifter rotate left                            : 1
+ 16-bit shifter rotate right                           : 1
+# FSMs                                                 : 3
+# Xors                                                 : 5
+ 1-bit xor16                                           : 1
+ 1-bit xor2                                            : 3
+ 16-bit xor2                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <M_reg_15> in Unit <booth_mult_fsm> is equivalent to the following 2 FFs/Latches, which will be removed : <M_reg_16> <M_reg_17> 
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <u_booth_mult/FSM_0> on signal <state[1:2]> with user encoding.
+------------------------
+ State      | Encoding
+------------------------
+ st_idle    | 00
+ st_load    | 01
+ st_compute | 10
+ st_done    | 11
+------------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <u_restoring_div/FSM_1> on signal <state[1:2]> with user encoding.
+------------------------
+ State      | Encoding
+------------------------
+ st_idle    | 00
+ st_load    | 01
+ st_compute | 10
+ st_done    | 11
+------------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <u_bist/FSM_2> on signal <state[1:2]> with gray encoding.
+----------------------
+ State    | Encoding
+----------------------
+ st_bidle | 00
+ st_brun  | 01
+ st_bdone | 11
+----------------------
+INFO:Xst:2261 - The FF/Latch <A_reg_15> in Unit <booth_mult_fsm> is equivalent to the following 2 FFs/Latches, which will be removed : <A_reg_16> <A_reg_17> 
+
+Optimizing unit <alu_top> ...
+
+Optimizing unit <booth_mult_fsm> ...
+
+Optimizing unit <restoring_div_fsm> ...
+
+Optimizing unit <bist_fsm> ...
+
+Optimizing unit <combinational_alu> ...
+INFO:Xst:3203 - The FF/Latch <u_bist/fail_idx_reg_3> in Unit <alu_top> is the opposite to the following FF/Latch, which will be removed : <u_bist/pass_reg> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block alu_top, actual ratio is 1.
+FlipFlop u_bist/state_FSM_FFd1 has been replicated 2 time(s)
+FlipFlop u_bist/state_FSM_FFd2 has been replicated 2 time(s)
+FlipFlop u_bist/vec_idx_0 has been replicated 3 time(s)
+FlipFlop u_bist/vec_idx_1 has been replicated 2 time(s)
+FlipFlop u_bist/vec_idx_3 has been replicated 3 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 199
+ Flip-Flops                                            : 199
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : alu_top.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 926
+#      GND                         : 1
+#      INV                         : 36
+#      LUT2                        : 81
+#      LUT3                        : 32
+#      LUT4                        : 126
+#      LUT5                        : 94
+#      LUT6                        : 321
+#      MUXCY                       : 108
+#      MUXF7                       : 25
+#      VCC                         : 1
+#      XORCY                       : 101
+# FlipFlops/Latches                : 199
+#      FDC                         : 27
+#      FDCE                        : 172
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 84
+#      IBUF                        : 39
+#      OBUF                        : 45
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             199  out of  126800     0%  
+ Number of Slice LUTs:                  690  out of  63400     1%  
+    Number used as Logic:               690  out of  63400     1%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    732
+   Number with an unused Flip Flop:     533  out of    732    72%  
+   Number with an unused LUT:            42  out of    732     5%  
+   Number of fully used LUT-FF pairs:   157  out of    732    21%  
+   Number of unique control sets:         7
+
+IO Utilization: 
+ Number of IOs:                          85
+ Number of bonded IOBs:                  85  out of    210    40%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 199   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 6.245ns (Maximum Frequency: 160.122MHz)
+   Minimum input arrival time before clock: 5.437ns
+   Maximum output required time after clock: 6.509ns
+   Maximum combinational path delay: 5.806ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 6.245ns (frequency: 160.122MHz)
+  Total number of paths / destination ports: 148847 / 368
+-------------------------------------------------------------------------
+Delay:               6.245ns (Levels of Logic = 13)
+  Source:            u_bist/vec_idx_2 (FF)
+  Destination:       u_bist/fail_idx_reg_3 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: u_bist/vec_idx_2 to u_bist/fail_idx_reg_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             46   0.361   0.792  u_bist/vec_idx_2 (u_bist/vec_idx_2)
+     LUT6:I1->O            1   0.097   0.295  Mmux_eff_operand_a93_G (N249)
+     LUT3:I2->O           18   0.097   0.762  Mmux_eff_operand_a931 (eff_operand_a<2>)
+     LUT6:I1->O            4   0.097   0.393  u_comb_alu/Sh1431 (u_comb_alu/Sh143)
+     LUT6:I4->O            1   0.097   0.511  Mmux_result142 (Mmux_result141)
+     LUT5:I2->O            2   0.097   0.383  Mmux_result144 (Mmux_result143)
+     LUT6:I4->O            1   0.097   0.379  u_comb_alu/Mmux_res_v_5_f7_12_SW0 (N174)
+     LUT5:I3->O            4   0.097   0.525  Mmux_result146 (result_7_OBUF)
+     LUT5:I2->O            1   0.097   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_lut<2>1 (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_lut<2>)
+     MUXCY:S->O            1   0.353   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<2> (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<3> (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<4> (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<4>)
+     MUXCY:CI->O           4   0.253   0.309  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<5> (u_bist/vec_idx[3]_chk_result[15]_not_equal_45_o)
+     LUT6:I5->O            1   0.097   0.000  u_bist/Mmux_state[1]_X_10_o_wide_mux_64_OUT15 (u_bist/state[1]_X_10_o_wide_mux_64_OUT<0>)
+     FDC:D                     0.008          u_bist/fail_idx_reg_0
+    ----------------------------------------
+    Total                      6.245ns (1.894ns logic, 4.351ns route)
+                                       (30.3% logic, 69.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 17298 / 334
+-------------------------------------------------------------------------
+Offset:              5.437ns (Levels of Logic = 15)
+  Source:            operand_b<1> (PAD)
+  Destination:       u_bist/fail_idx_reg_3 (FF)
+  Destination Clock: clk rising
+
+  Data Path: operand_b<1> to u_bist/fail_idx_reg_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.001   0.698  operand_b_1_IBUF (operand_b_1_IBUF)
+     LUT6:I0->O           58   0.097   0.794  Mmux_eff_operand_b81 (eff_operand_b<1>)
+     LUT6:I1->O            5   0.097   0.530  u_comb_alu/Sh1331 (u_comb_alu/Sh133)
+     LUT5:I2->O            1   0.097   0.295  u_comb_alu/Sh851 (u_comb_alu/Sh85)
+     LUT6:I5->O            1   0.097   0.000  u_comb_alu/Mmux_res_v_611_G (N229)
+     MUXF7:I1->O           2   0.279   0.383  u_comb_alu/Mmux_res_v_611 (u_comb_alu/Mmux_res_v_611)
+     LUT6:I4->O            1   0.097   0.379  Mmux_result125_SW2 (N193)
+     LUT5:I3->O            4   0.097   0.309  Mmux_result125 (result_5_OBUF)
+     LUT6:I5->O            1   0.097   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_lut<1> (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_lut<1>)
+     MUXCY:S->O            1   0.353   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<1> (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<2> (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<3> (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<4> (u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<4>)
+     MUXCY:CI->O           4   0.253   0.309  u_bist/Mcompar_vec_idx[3]_chk_result[15]_not_equal_45_o_cy<5> (u_bist/vec_idx[3]_chk_result[15]_not_equal_45_o)
+     LUT6:I5->O            1   0.097   0.000  u_bist/Mmux_state[1]_X_10_o_wide_mux_64_OUT15 (u_bist/state[1]_X_10_o_wide_mux_64_OUT<0>)
+     FDC:D                     0.008          u_bist/fail_idx_reg_0
+    ----------------------------------------
+    Total                      5.437ns (1.739ns logic, 3.698ns route)
+                                       (32.0% logic, 68.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 96347 / 45
+-------------------------------------------------------------------------
+Offset:              6.509ns (Levels of Logic = 11)
+  Source:            u_bist/vec_idx_2 (FF)
+  Destination:       zero_flag (PAD)
+  Source Clock:      clk rising
+
+  Data Path: u_bist/vec_idx_2 to zero_flag
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             46   0.361   0.620  u_bist/vec_idx_2 (u_bist/vec_idx_2)
+     LUT3:I0->O            7   0.097   0.323  u_bist/Mmux_gen_opcode311 (u_bist/Mmux_gen_opcode31)
+     LUT6:I5->O           58   0.097   0.794  Mmux_eff_operand_b81 (eff_operand_b<1>)
+     LUT6:I1->O            5   0.097   0.530  u_comb_alu/Sh1331 (u_comb_alu/Sh133)
+     LUT5:I2->O            1   0.097   0.295  u_comb_alu/Sh851 (u_comb_alu/Sh85)
+     LUT6:I5->O            1   0.097   0.000  u_comb_alu/Mmux_res_v_611_G (N229)
+     MUXF7:I1->O           2   0.279   0.383  u_comb_alu/Mmux_res_v_611 (u_comb_alu/Mmux_res_v_611)
+     LUT6:I4->O            1   0.097   0.379  Mmux_result125_SW2 (N193)
+     LUT5:I3->O            4   0.097   0.707  Mmux_result125 (result_5_OBUF)
+     LUT6:I0->O            1   0.097   0.683  u_flags/zero_flag9 (u_flags/zero_flag8)
+     LUT6:I1->O            1   0.097   0.279  u_flags/zero_flag10 (zero_flag_OBUF)
+     OBUF:I->O                 0.000          zero_flag_OBUF (zero_flag)
+    ----------------------------------------
+    Total                      6.509ns (1.513ns logic, 4.996ns route)
+                                       (23.2% logic, 76.8% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 12479 / 37
+-------------------------------------------------------------------------
+Delay:               5.806ns (Levels of Logic = 11)
+  Source:            operand_b<1> (PAD)
+  Destination:       zero_flag (PAD)
+
+  Data Path: operand_b<1> to zero_flag
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.001   0.698  operand_b_1_IBUF (operand_b_1_IBUF)
+     LUT6:I0->O           58   0.097   0.794  Mmux_eff_operand_b81 (eff_operand_b<1>)
+     LUT6:I1->O            5   0.097   0.530  u_comb_alu/Sh1331 (u_comb_alu/Sh133)
+     LUT5:I2->O            1   0.097   0.295  u_comb_alu/Sh851 (u_comb_alu/Sh85)
+     LUT6:I5->O            1   0.097   0.000  u_comb_alu/Mmux_res_v_611_G (N229)
+     MUXF7:I1->O           2   0.279   0.383  u_comb_alu/Mmux_res_v_611 (u_comb_alu/Mmux_res_v_611)
+     LUT6:I4->O            1   0.097   0.379  Mmux_result125_SW2 (N193)
+     LUT5:I3->O            4   0.097   0.707  Mmux_result125 (result_5_OBUF)
+     LUT6:I0->O            1   0.097   0.683  u_flags/zero_flag9 (u_flags/zero_flag8)
+     LUT6:I1->O            1   0.097   0.279  u_flags/zero_flag10 (zero_flag_OBUF)
+     OBUF:I->O                 0.000          zero_flag_OBUF (zero_flag)
+    ----------------------------------------
+    Total                      5.806ns (1.056ns logic, 4.750ns route)
+                                       (18.2% logic, 81.8% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    6.245|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 16.00 secs
+Total CPU time to Xst completion: 16.32 secs
+ 
+--> 
+
+Total memory usage is 4692780 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
+Number of infos    :    5 (   0 filtered)
+

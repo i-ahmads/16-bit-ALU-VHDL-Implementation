@@ -27,13 +27,16 @@ Raw run commands and output are in [`ghdl_run_log.txt`](ghdl_run_log.txt).
 
 ## Algorithm comparison (added per professor feedback)
 
-Two conventional alternatives were implemented with **identical interfaces** to the Tier 1 FSMs, to give a direct cycle-count/complexity comparison in the report:
+Two conventional alternatives were implemented with **identical interfaces** to the Tier 1 FSMs, in [`src/compare/`](../src/compare/) with testbenches in [`tb/compare/`](../tb/compare/), to give a direct cycle-count/complexity comparison in the report:
 
 | Alternative | Compares against | Assertions | Result |
 |---|---|---:|---|
-| `shift_add_mult_fsm.vhd` (shift-and-add multiplier) | `booth_mult_fsm.vhd` | 22 | 22/22 PASS |
-| `non_restoring_div_fsm.vhd` (non-restoring division) | `restoring_div_fsm.vhd` | 17 | 17/17 PASS |
+| [`shift_add_mult_fsm.vhd`](../src/compare/shift_add_mult_fsm.vhd) (shift-and-add multiplier) | `booth_mult_fsm.vhd` | 22 | 22/22 PASS |
+| [`non_restoring_div_fsm.vhd`](../src/compare/non_restoring_div_fsm.vhd) (non-restoring division) | `restoring_div_fsm.vhd` | 17 | 17/17 PASS |
 
-**Findings:** radix-4 Booth multiplication completes in 8 cycles vs. 16 cycles for shift-and-add on the same 16-bit operands. Restoring division has fully deterministic latency (always 16 cycles), whereas non-restoring division's cycle count/control complexity trades differently depending on implementation choices — see the report's Tables 4.1/4.2 for the full breakdown.
+Both re-run fresh under GHDL 4.1.0 for this repository snapshot — see [`ghdl_run_log_compare.txt`](ghdl_run_log_compare.txt). `tb_shift_add_mult_fsm` and `tb_non_restoring_div_fsm` use the **identical test vectors** as their Tier 1 counterparts (`tb_booth_mult_fsm`/`tb_restoring_div_fsm`), per course feedback, and additionally print a per-vector clock-cycle count.
 
-> **Note:** `shift_add_mult_fsm.vhd` and `non_restoring_div_fsm.vhd` are not included in `src/` in this repository snapshot — only the finalized Tier 1 implementations (`booth_mult_fsm.vhd`, `restoring_div_fsm.vhd`) are. Add the comparison-alternative sources here if/when they're available as separate files.
+**Findings:** radix-4 Booth multiplication (`booth_mult_fsm`) retires 2 bits/cycle and needs 8 compute iterations; shift-and-add (`shift_add_mult_fsm`) retires 1 bit/cycle and needs 16 — confirmed directly in simulation, where `shift_add_mult_fsm` takes ~18 total cycles per operation (load + 16 compute + done) vs. Booth's ~10. Synthesized utilization/timing (see `synthesis_results.md`) also favors Booth on area despite the extra guard-bit logic, since fewer sequential states are needed overall.
+
+For division, `non_restoring_div_fsm` adds an `ST_CORRECT` state (non-restoring division needs a final correction step when the running remainder is negative) versus `restoring_div_fsm`'s pure 4-state shape — both take 16 compute iterations (1 quotient bit/cycle), so their cycle counts are close (see `synthesis_results.md` for the resulting area/Fmax trade-off, where non-restoring div synthesizes notably smaller and faster since it avoids the trial-subtract-and-restore combinational path).
+

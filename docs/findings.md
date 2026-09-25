@@ -27,5 +27,4 @@
 ## On the horizon / not yet in this repository
 
 - Tier 3 stretch goals (Hamming SEC on the output register, Gray-code FSM iteration counter) — implemented only if time permits.
-- `shift_add_mult_fsm.vhd` and `non_restoring_div_fsm.vhd` — conventional-algorithm comparison alternatives built per professor feedback (22/22 and 17/17 passing respectively against the same vector sets as their Tier 1 counterparts). Not included in `src/` in this snapshot; add them here if/when their source is available separately from the report.
 - XPower Analyzer before/after power numbers for the Tier 2 gating changes — to be measured, not asserted.

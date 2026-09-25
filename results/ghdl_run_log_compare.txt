@@ -1,0 +1,10 @@
+GHDL version: GHDL 4.1.0 (Ubuntu 4.1.0+dfsg-0ubuntu2.1) [Dunoon edition]
+
+############ tb_shift_add_mult_fsm ############
+/home/claude/alu_build/tb/compare/tb_shift_add_mult_fsm.vhd:144:9:@4455ns:(report note): shift_add_mult_fsm TB complete. PASS=22 FAIL=0
+/home/claude/alu_build/tb/compare/tb_shift_add_mult_fsm.vhd:148:13:@4455ns:(report note): *** ALL TESTS PASSED ***
+
+############ tb_non_restoring_div_fsm ############
+/home/claude/alu_build/tb/compare/tb_non_restoring_div_fsm.vhd:141:9:@3365ns:(report note): non_restoring_div_fsm TB complete. PASS=17 FAIL=0
+/home/claude/alu_build/tb/compare/tb_non_restoring_div_fsm.vhd:145:13:@3365ns:(report note): *** ALL TESTS PASSED ***
+

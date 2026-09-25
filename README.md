@@ -1,4 +1,9 @@
 # 16-bit ALU — VHDL Implementation
+
+**Course:** EEE413/ECE413 Digital System Design, BRAC University
+**Group:** Group 4, Section 02
+**Members:** Sujana Haque (22221007), Intisar Ahmed (22221111), Tanvir Jubaer (22321052), Satirtha Saha (22321058), Mahdi Abrar Yousuf (22321069)
+
 A 16-bit ALU built up in tiers: a combinational core, an FSM-controlled multiply/divide datapath, and a built-in self-test (BIST) layer, all verified in GHDL and synthesized on Xilinx ISE targeting an Artix-7 FPGA.
 
 This repository contains source code, testbenches, and verification/synthesis results only. The written report and slide deck are maintained separately and are not included here.
@@ -25,15 +30,23 @@ Hamming SEC on the output result register; Gray-code FSM iteration counter.
 ### Top level (`alu_top.vhd`)
 Wires the above together. Combinational ops resolve same-cycle (`result_valid='1'` immediately). MUL/DIV are started with a `start` pulse; `busy` goes high and `result_valid` pulses once the FSM finishes. `result_ext` carries the extension word (Booth `product_hi` / division `remainder`) for MUL/DIV, and is zero for combinational ops. While BIST is active, external `result_valid` is gated low so a caller can't mistake BIST-internal traffic for its own request.
 
+### Algorithm comparison (`src/compare/`, added per professor feedback)
+- **`shift_add_mult_fsm.vhd`** — conventional shift-and-add multiplier, same interface as `booth_mult_fsm.vhd`, 16 compute cycles (1 bit/cycle) vs. Booth's 8.
+- **`non_restoring_div_fsm.vhd`** — non-restoring division, same interface as `restoring_div_fsm.vhd`, adds a final `ST_CORRECT` step versus restoring division's pure 4-state shape.
+
+Both are tested against the **identical vectors** as their Tier 1 counterparts (`tb/compare/tb_shift_add_mult_fsm.vhd`, `tb/compare/tb_non_restoring_div_fsm.vhd`), each also synthesized standalone. See [`results/synthesis_results.md`](results/synthesis_results.md) for the resulting area/Fmax comparison.
+
 ---
 
 ## Repository layout
 
 ```
-src/     7 synthesizable VHDL source files
-tb/      6 self-checking testbenches
-results/ verification and synthesis results (this is the "findings" section)
-docs/    design notes, bugs found, and known limitations
+src/          7 synthesizable VHDL source files (Tier 1 + Tier 2 finalized design)
+src/compare/  2 alternative-algorithm sources (shift-add multiplier, non-restoring divider)
+tb/           6 self-checking testbenches
+tb/compare/   2 testbenches for the comparison algorithms
+results/      verification results, synthesis reports, RTL/Technology schematics, ISim waveforms
+docs/         design notes, bugs found, and known limitations
 ```
 
 ## Toolchain
@@ -41,7 +54,7 @@ docs/    design notes, bugs found, and known limitations
 | Purpose | Tool |
 |---|---|
 | Simulation | GHDL 4.1.0 (mcode backend, `--std=93`) |
-| Waveform viewing | GTKWave |
+| Waveform viewing | Xilinx ISim / GTKWave |
 | Synthesis | Xilinx ISE 14.7 / XST |
 | Target device | xc7a100t-3csg324 (Artix-7) |
 
@@ -65,3 +78,5 @@ See [`results/testbench_results.md`](results/testbench_results.md) for expected 
 ## Status
 
 See [`results/testbench_results.md`](results/testbench_results.md) and [`results/synthesis_results.md`](results/synthesis_results.md) for full verification and synthesis numbers, and [`docs/findings.md`](docs/findings.md) for bugs found and design notes.
+
+Real RTL/Technology schematic screenshots and ISim waveform captures (from the actual Xilinx ISE project) are in [`results/schematics/`](results/schematics/) and [`results/waveforms/`](results/waveforms/).
