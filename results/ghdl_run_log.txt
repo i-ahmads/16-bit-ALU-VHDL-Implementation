@@ -1,0 +1,27 @@
+GHDL version: GHDL 4.1.0 (Ubuntu 4.1.0+dfsg-0ubuntu2.1) [Dunoon edition]
+Command: ghdl -a --std=93 <all src files>
+
+############ tb_combinational_alu ############
+../tb/tb_combinational_alu.vhd:141:9:@160ns:(report note): combinational_alu TB complete. PASS=15 FAIL=0
+../tb/tb_combinational_alu.vhd:145:13:@160ns:(report note): *** ALL TESTS PASSED ***
+
+############ tb_flags_unit ############
+../tb/tb_flags_unit.vhd:117:9:@110ns:(report note): flags_unit TB complete. PASS=10 FAIL=0
+../tb/tb_flags_unit.vhd:121:13:@110ns:(report note): *** ALL TESTS PASSED ***
+
+############ tb_booth_mult_fsm ############
+../tb/tb_booth_mult_fsm.vhd:143:9:@2695ns:(report note): booth_mult_fsm TB complete. PASS=22 FAIL=0
+../tb/tb_booth_mult_fsm.vhd:147:13:@2695ns:(report note): *** ALL TESTS PASSED ***
+
+############ tb_restoring_div_fsm ############
+../tb/tb_restoring_div_fsm.vhd:136:9:@3295ns:(report note): restoring_div_fsm TB complete. PASS=17 FAIL=0
+../tb/tb_restoring_div_fsm.vhd:140:13:@3295ns:(report note): *** ALL TESTS PASSED ***
+
+############ tb_bist_fsm ############
+../tb/tb_bist_fsm.vhd:264:9:@925ns:(report note): bist_fsm unit TB complete. PASS=6 FAIL=0
+../tb/tb_bist_fsm.vhd:268:13:@925ns:(report note): *** ALL TESTS PASSED ***
+
+############ tb_alu_top ############
+../tb/tb_alu_top.vhd:249:9:@1106ns:(report note): alu_top integration TB complete. PASS=14 FAIL=0
+../tb/tb_alu_top.vhd:253:13:@1106ns:(report note): *** ALL TESTS PASSED ***
+
