@@ -1,9 +1,4 @@
 # 16-bit ALU — VHDL Implementation
-
-**Course:** EEE413/ECE413 Digital System Design, BRAC University
-**Group:** Group 4, Section 02
-**Members:** Sujana Haque (22221007), Intisar Ahmed (22221111), Tanvir Jubaer (22321052), Satirtha Saha (22321058), Mahdi Abrar Yousuf (22321069)
-
 A 16-bit ALU built up in tiers: a combinational core, an FSM-controlled multiply/divide datapath, and a built-in self-test (BIST) layer, all verified in GHDL and synthesized on Xilinx ISE targeting an Artix-7 FPGA.
 
 This repository contains source code, testbenches, and verification/synthesis results only. The written report and slide deck are maintained separately and are not included here.
