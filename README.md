@@ -2,6 +2,48 @@
 A 16-bit ALU built up in tiers: a combinational core, an FSM-controlled multiply/divide datapath, and a built-in self-test (BIST) layer, all verified in GHDL and synthesized on Xilinx ISE targeting an Artix-7 FPGA.
 This repository contains source code, testbenches, and verification/synthesis results only. The written report and slide deck are maintained separately and are not included here.
 
+
+---
+
+## Design at a glance
+
+The screenshots below come from the project's Xilinx ISE schematic viewer and ISim simulations. Open an image for a closer look at signals and labels.
+
+### RTL architecture
+
+![Top-level RTL schematic of the 16-bit ALU](results/schematics/alu_top/RTL/1.%20RTL%20top%20view.JPG)
+
+*Top-level RTL view: the ALU interface and its main synthesized blocks.*
+
+![Expanded RTL schematic showing the ALU's internal connections](results/schematics/alu_top/RTL/2.%20RTL%20middle%20view.JPG)
+
+*Expanded RTL view: how the combinational path, iterative arithmetic, flags, and BIST logic connect. See the [full schematic set](results/schematics/alu_top/RTL/) for module-level views.*
+
+### Simulation examples
+
+![ISim waveform from the top-level ALU testbench](results/waveforms/alu_top/1.%20top%20alu%20part%201.JPG)
+
+*Top-level simulation: inspect inputs, operation selection, outputs, and control timing. The [second waveform capture](results/waveforms/alu_top/2.%20top%20alu%20part%202.JPG) continues the trace.*
+
+![ISim waveform from the Booth multiplier testbench](results/waveforms/alu_top/4.%20booth%20mult%20tb.JPG)
+
+*Booth multiplier simulation: the iterative multiplication path is exercised by the signed test vectors. The [waveform collection](results/waveforms/alu_top/) also includes division, flags, combinational operations, and BIST.*
+
+### Synthesis view and measured results
+
+![Post-synthesis technology schematic of the ALU](results/schematics/alu_top/Technology/9.%20Inner%20view.JPG)
+
+*Technology view: a closer view of the mapped hardware after synthesis; the [top-level technology view](results/schematics/alu_top/Technology/8.%20tech%20top.JPG) is available separately. This schematic illustrates structure, while the XST report supplies the resource and timing numbers.*
+
+| Check | Reported result |
+|---|---:|
+| Self-checking GHDL assertions | 84/84 pass across six primary testbenches |
+| ALU slice LUTs | 690 / 63,400 |
+| ALU slice registers | 199 / 126,800 |
+| XST estimated minimum period | 6.245 ns (160.12 MHz) |
+
+These are the results recorded in [verification](results/testbench_results.md) and [synthesis](results/synthesis_results.md). The timing figure is an XST synthesis estimate for the specified Artix-7 target, not a measured clock rate on a physical board.
+
 ---
 
 ## Architecture
